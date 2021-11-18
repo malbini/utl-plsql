@@ -189,7 +189,7 @@ CREATE OR REPLACE PACKAGE BODY UTL_DDL_SOURCE AS
       l_line := DBMS_LOB.SUBSTR (p_source, l_next_eol_index - l_curr_index, l_curr_index);      
       l_curr_index := l_next_eol_index + 1;
       
-      l_line := TRIM(l_line);
+      l_line := TRIM(TRIM(CHR(9) FROM TRIM(l_line)));
       
       IF l_line IS NOT NULL
       THEN        
